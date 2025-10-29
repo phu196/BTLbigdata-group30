@@ -79,6 +79,9 @@ def main():
         valid_records += len(current_batch)
     
     session.close()
-    logging.info(f"Finished record insertion. Total: {valid_records}, Inalid: {invalid_records}")
+    logging.info("Finished record insertion\nFinal Summary:")
+    logging.info(f"Total records processed: {len(records)}")
+    logging.info(f"Valid records inserted: {valid_records}")
+    logging.warning(f"Invalid records skipped: {invalid_records}")
 
 
