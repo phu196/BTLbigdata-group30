@@ -11,12 +11,14 @@ spec:
     tasks.max: 1
     database.hostname: postgres
     database.port: 5432
-    database.user: ${secrets:debezium/debezium-secret:username}
-    database.password: ${secrets:debezium/debezium-secret:password}
+    database.user: cdc
+    # ${secrets:debezium/debezium-secret:username}
+    database.password: cdc
+    # ${secrets:debezium/debezium-secret:password}
     database.dbname: cdc
     topic.prefix: postgres
     plugin.name: pgoutput
-    # publication.autocreate.mode: filtered
+    
     table.include.list: public.customers
     schema.history.internal.kafka.bootstrap.servers: debezium-cluster-kafka-bootstrap:9092
     schema.history.internal.kafka.topic: schema-changes.customers
@@ -25,6 +27,9 @@ spec:
     transforms.unwrap.type: io.debezium.transforms.ExtractNewRecordState
 
     transforms.unwrap.delete.handling.mode: drop
+
+
+    # publication.autocreate.mode: filtered
     # delete.tombstone.handling.mode: rewrite
     # converters: timestampConverter,
     # timestampConverter.type: oryanmoshe.kafka.connect.util.TimestampConverter

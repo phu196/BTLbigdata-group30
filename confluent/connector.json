@@ -1,0 +1,16 @@
+{
+  "name": "inventory-postgres-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "database.hostname": "postgres",
+    "database.port": "5432",
+    "database.user": "cdc",
+    "database.password": "cdc",
+    "database.dbname": "cdc",
+    "database.server.name": "postgres", 
+    "plugin.name": "pgoutput",
+    "table.include.list": "public.customers",
+    "transforms": "unwrap",
+    "transforms.unwrap.type":"io.debezium.transforms.ExtractNewRecordState"
+  }
+}
